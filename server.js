@@ -12,6 +12,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Explicit route for homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // ── Email transporter (Gmail) ──
 const transporter = nodemailer.createTransport({
   service: 'gmail',
