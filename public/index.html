@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ọ̀mụmụ Igbo — Learn Igbo With Excellence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --indigo: #3D2785;
+      --indigo-dark: #281a5a;
+      --indigo-light: #6c4fcf;
+      --gold: #D4A017;
+      --gold-light: #f0c842;
+      --emerald: #0f7b5c;
+      --cream: #FAF6EF;
+      --beige: #F2EAD8;
+      --charcoal: #1e1b2e;
+      --gray: #5a5570;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--indigo-light); border-radius: 3px; }
+
+    /* ── Igbo Pattern SVG Background ── */
+    .igbo-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233D2785' fill-opacity='0.05'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3Cpath d='M15 15 L45 15 L45 45 L15 45 Z' fill-opacity='0.03'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .uli-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cpath d='M0 40 Q20 20 40 40 Q60 60 80 40' stroke='%23D4A017' stroke-width='1' stroke-opacity='0.12' fill='none'/%3E%3Cpath d='M0 20 Q20 0 40 20 Q60 40 80 20' stroke='%23D4A017' stroke-width='1' stroke-opacity='0.08' fill='none'/%3E%3Cpath d='M0 60 Q20 40 40 60 Q60 80 80 60' stroke='%23D4A017' stroke-width='1' stroke-opacity='0.08' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── Typography ── */
+    .font-display { font-family: 'Playfair Display', serif; }
+    .font-serif-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+    /* ── Nav ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: all 0.4s ease;
+      padding: 20px 0;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 30px rgba(61,39,133,0.12);
+      padding: 12px 0;
+    }
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: var(--indigo); }
+    .nav-link:hover::after { width: 100%; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(61,39,133,0.3);
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(61,39,133,0.45);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--indigo);
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      border: 2px solid var(--indigo);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: var(--indigo);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── Hero ── */
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--indigo-dark) 0%, var(--indigo) 40%, #5e35b1 70%, #7c3aed 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      animation-delay: 0s;
+    }
+    .hero-orb-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #a78bfa 0%, transparent 70%);
+      bottom: -50px; left: -50px;
+      animation-delay: 3s;
+    }
+    .hero-orb-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--emerald) 0%, transparent 70%);
+      top: 40%; left: 30%;
+      animation-delay: 5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Uli art decorative lines in hero */
+    .hero-uli {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='100' cy='100' r='80' stroke='white' stroke-width='1' fill='none'/%3E%3Ccircle cx='100' cy='100' r='50' stroke='white' stroke-width='1' fill='none'/%3E%3Ccircle cx='100' cy='100' r='20' stroke='white' stroke-width='1' fill='none'/%3E%3Cpath d='M20 100 L180 100' stroke='white' stroke-width='1'/%3E%3Cpath d='M100 20 L100 180' stroke='white' stroke-width='1'/%3E%3Cpath d='M43 43 L157 157' stroke='white' stroke-width='0.5'/%3E%3Cpath d='M157 43 L43 157' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* stagger delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* ── Service cards ── */
+    .service-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid rgba(61,39,133,0.08);
+      transition: all 0.4s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--indigo), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(61,39,133,0.15);
+      border-color: transparent;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 20px;
+    }
+
+    /* ── Class cards ── */
+    .class-card {
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .class-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.18);
+    }
+
+    /* ── Testimonial cards ── */
+    .testimonial-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 30px rgba(61,39,133,0.07);
+      border: 1px solid rgba(61,39,133,0.07);
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(61,39,133,0.14);
+    }
+
+    /* ── Booking Form ── */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 8px;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 2px solid rgba(61,39,133,0.12);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--charcoal);
+      background: #fff;
+      transition: all 0.3s ease;
+      outline: none;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--indigo-light);
+      box-shadow: 0 0 0 4px rgba(108,79,207,0.12);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      padding: 10px 14px;
+      border: 2px solid rgba(61,39,133,0.1);
+      border-radius: 10px;
+      transition: all 0.25s;
+      user-select: none;
+    }
+    .checkbox-label:hover { border-color: var(--indigo-light); background: rgba(108,79,207,0.04); }
+    .checkbox-label input[type="checkbox"] { display: none; }
+    .checkbox-custom {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(61,39,133,0.3);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s;
+    }
+    .checkbox-label input:checked + .checkbox-custom {
+      background: var(--indigo);
+      border-color: var(--indigo);
+    }
+    .checkbox-label input:checked + .checkbox-custom::after {
+      content: '✓';
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .checkbox-label input:checked ~ span { color: var(--indigo); font-weight: 600; }
+
+    /* ── Loading spinner ── */
+    .spinner {
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Success / Error alerts ── */
+    .alert {
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9375rem;
+    }
+    .alert-success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .alert-error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* ── Section labels ── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(61,39,133,0.08);
+      color: var(--indigo);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ── Stats strip ── */
+    .stat-card {
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    /* ── Gold divider ── */
+    .gold-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin: 16px auto 0;
+    }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(40,26,90,0.97);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    #mobile-menu a:hover { color: var(--gold-light); }
+
+    /* ── Pulse animation for CTA ── */
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(212,160,23,0.5); }
+      70% { box-shadow: 0 0 0 16px rgba(212,160,23,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,160,23,0); }
+    }
+    .btn-pulse { animation: pulse-ring 2.5s ease-out infinite; }
+
+    /* ── Number counter animation ── */
+    @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .count-anim { animation: countUp 0.6s ease forwards; }
+
+    /* ── Ticker ── */
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-wrap { overflow: hidden; }
+    .ticker-content {
+      display: flex;
+      animation: ticker-scroll 20s linear infinite;
+      width: max-content;
+    }
+
+    /* ── Wave divider ── */
+    .wave-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .wave-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+
+    /* ── Footer ── */
+    .footer-link {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--gold-light); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title { font-size: clamp(2.25rem, 8vw, 3.5rem) !important; }
+      .section-heading { font-size: clamp(1.75rem, 6vw, 2.5rem) !important; }
+    }
+
+    /* Number input arrows remove */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    input[type=number] { -moz-appearance: textfield; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ NAVBAR ══════════════════════════════════════ -->
+<nav id="navbar" class="w-full z-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 text-white" style="text-decoration:none">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold" style="background: linear-gradient(135deg, var(--gold), var(--gold-light))">Ọ</div>
+        <div>
+          <div class="font-display font-bold text-lg leading-none" id="logo-name">Ọ̀mụmụ Igbo</div>
+          <div class="text-xs opacity-75 leading-none mt-0.5" id="logo-sub">Language Excellence</div>
+        </div>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8" id="nav-links-wrap">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#classes" class="nav-link">Classes</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <!-- CTA + Hamburger -->
+      <div class="flex items-center gap-4">
+        <a href="#booking" class="btn-primary hidden md:inline-flex">
+          Book a Session
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()" aria-label="Menu">
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="h1"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="h2"></span>
+          <span class="block w-4 h-0.5 bg-white transition-all duration-300" id="h3"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════ MOBILE MENU ══════════════════════════════════════ -->
+<div id="mobile-menu">
+  <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white text-3xl">✕</button>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#classes" onclick="toggleMenu()">Classes</a>
+  <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#booking" onclick="toggleMenu()" class="btn-primary mt-4">Book a Session →</a>
+</div>
+
+<!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
+<section id="home" class="hero-section">
+  <div class="hero-uli"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <!-- Igbo geometric decorative circles -->
+  <div class="absolute" style="right:6%; top:20%; opacity:0.15">
+    <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="140" cy="140" r="130" stroke="white" stroke-width="1"/>
+      <circle cx="140" cy="140" r="90" stroke="#D4A017" stroke-width="1.5"/>
+      <circle cx="140" cy="140" r="50" stroke="white" stroke-width="1"/>
+      <circle cx="140" cy="140" r="20" fill="#D4A017" opacity="0.4"/>
+      <path d="M10 140 L270 140" stroke="white" stroke-width="0.75"/>
+      <path d="M140 10 L140 270" stroke="white" stroke-width="0.75"/>
+      <path d="M46 46 L234 234" stroke="#D4A017" stroke-width="0.75"/>
+      <path d="M234 46 L46 234" stroke="#D4A017" stroke-width="0.75"/>
+      <path d="M140 10 L270 140 L140 270 L10 140 Z" stroke="white" stroke-width="0.75" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-32 relative z-10 w-full">
+    <div class="max-w-2xl">
+      <!-- Greeting badge -->
+      <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8 text-white">
+        <span class="text-lg">🌍</span>
+        <span class="text-sm font-semibold tracking-wide">Nnọọ — Welcome to Igbo Learning</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display text-white leading-[1.05] mb-6 hero-title" style="font-size: clamp(3rem, 6vw, 4.75rem)">
+        Speak Igbo.<br/>
+        <span style="color: var(--gold-light)">Carry Your Culture.</span><br/>
+        <span class="font-serif-italic font-normal opacity-90" style="font-size:0.8em">With Confidence.</span>
+      </h1>
+
+      <p class="text-white/80 text-lg mb-10 leading-relaxed max-w-xl">
+        Expert-led Igbo language classes blending cultural heritage with modern pedagogy. From beginners to fluent speakers — we guide every step of your journey.
+      </p>
+
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#booking" class="btn-primary btn-pulse" style="padding:16px 36px; font-size:1rem">
+          Book Your First Session
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="flex items-center gap-2 text-white/85 hover:text-white transition-colors font-medium text-sm" style="text-decoration:none">
+          <span class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-xs">▶</span>
+          Explore Services
+        </a>
+      </div>
+
+      <!-- Mini stats -->
+      <div class="flex gap-8 mt-14 pt-8 border-t border-white/15">
+        <div>
+          <div class="font-display font-bold text-2xl text-white" id="stat1">500+</div>
+          <div class="text-white/60 text-sm mt-0.5">Students Taught</div>
+        </div>
+        <div class="w-px bg-white/15"></div>
+        <div>
+          <div class="font-display font-bold text-2xl text-white">7</div>
+          <div class="text-white/60 text-sm mt-0.5">Subjects Offered</div>
+        </div>
+        <div class="w-px bg-white/15"></div>
+        <div>
+          <div class="font-display font-bold text-2xl text-white">98%</div>
+          <div class="text-white/60 text-sm mt-0.5">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="wave-bottom">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FAF6EF"/></svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ TICKER ══════════════════════════════════════ -->
+<div class="py-4 overflow-hidden" style="background: var(--gold); border-bottom: 2px solid var(--indigo)">
+  <div class="ticker-wrap">
+    <div class="ticker-content">
+      <!-- duplicated for seamless loop -->
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🗣 Igbo Language Tutoring</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">✍️ Writing & Proofreading</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🔄 Igbo–English Translation</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🎤 Public Speaking</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🌐 Conversational English</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🌱 Character Development</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">💼 Career Counseling</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <!-- repeat -->
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🗣 Igbo Language Tutoring</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">✍️ Writing & Proofreading</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🔄 Igbo–English Translation</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🎤 Public Speaking</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🌐 Conversational English</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">🌱 Character Development</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+      <span class="mx-8 text-sm font-bold text-white tracking-widest uppercase whitespace-nowrap">💼 Career Counseling</span>
+      <span class="mx-2 text-white opacity-50">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ ABOUT ══════════════════════════════════════ -->
+<section id="about" class="py-24 relative igbo-pattern" style="background-color: var(--cream)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Left: Visual -->
+      <div class="relative reveal reveal-left">
+        <div class="rounded-3xl overflow-hidden shadow-2xl relative" style="background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%); min-height:420px">
+          <!-- Decorative Nsibidi-inspired pattern -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-10">
+            <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
+              <circle cx="150" cy="150" r="140" stroke="white" stroke-width="2"/>
+              <circle cx="150" cy="150" r="100" stroke="white" stroke-width="1.5"/>
+              <circle cx="150" cy="150" r="60" stroke="white" stroke-width="1"/>
+              <path d="M150 10 L150 290" stroke="white" stroke-width="1.5"/>
+              <path d="M10 150 L290 150" stroke="white" stroke-width="1.5"/>
+              <path d="M52 52 L248 248" stroke="white" stroke-width="1"/>
+              <path d="M248 52 L52 248" stroke="white" stroke-width="1"/>
+              <polygon points="150,30 270,150 150,270 30,150" stroke="white" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="relative z-10 p-10 h-full flex flex-col justify-between" style="min-height:420px">
+            <div class="text-white">
+              <div class="font-serif-italic text-5xl mb-2" style="color:var(--gold-light)">"</div>
+              <p class="text-xl font-display leading-relaxed mb-6">
+                Onye wetara oji<br/>wetara ndụ.
+              </p>
+              <p class="text-white/65 text-sm italic">
+                "One who brings kola nut brings life" — <br/>An Igbo proverb on cultural connection.
+              </p>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mt-8">
+              <div class="text-center p-4 rounded-xl bg-white/10">
+                <div class="font-display font-bold text-2xl text-white">8+</div>
+                <div class="text-white/60 text-xs mt-1">Years Experience</div>
+              </div>
+              <div class="text-center p-4 rounded-xl bg-white/10">
+                <div class="font-display font-bold text-2xl text-white">500+</div>
+                <div class="text-white/60 text-xs mt-1">Students</div>
+              </div>
+              <div class="text-center p-4 rounded-xl bg-white/10">
+                <div class="font-display font-bold text-2xl text-white">7</div>
+                <div class="text-white/60 text-xs mt-1">Programs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Floating gold badge -->
+        <div class="absolute -bottom-6 -right-4 bg-white rounded-2xl shadow-xl p-5 flex items-center gap-3 max-w-xs reveal delay-3">
+          <div class="text-3xl">🏆</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Excellence in Teaching</div>
+            <div class="text-xs" style="color:var(--gray)">Certified Igbo Language Educator</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Text -->
+      <div class="reveal reveal-right">
+        <div class="section-label">
+          <span>🌍</span> Our Story
+        </div>
+        <h2 class="font-display section-heading mb-6" style="font-size: clamp(2rem, 4vw, 2.75rem); color:var(--charcoal); line-height:1.15">
+          More Than Language —<br/>
+          <span style="color:var(--indigo)">A Cultural Bridge</span>
+        </h2>
+        <div class="gold-divider" style="margin: 0 0 24px 0;"></div>
+        <p class="leading-relaxed mb-6 text-base" style="color:var(--gray)">
+          We believe Igbo is not just a language — it is a living archive of civilization, philosophy, and identity. Our mission is to ensure every Igbo person, regardless of age or background, can access this heritage with joy and confidence.
+        </p>
+        <p class="leading-relaxed mb-8 text-base" style="color:var(--gray)">
+          Led by a passionate, certified educator with over 8 years of tutoring excellence, our platform delivers structured, culturally rich learning experiences tailored to each student's goals — from spoken fluency to academic mastery.
+        </p>
+
+        <!-- Feature list -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 text-sm" style="color:var(--charcoal)">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0" style="background:var(--emerald)">✓</div>
+            Personalized 1-on-1 and group learning paths
+          </div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--charcoal)">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0" style="background:var(--emerald)">✓</div>
+            Culturally immersive lessons with proverbs & oral tradition
+          </div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--charcoal)">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0" style="background:var(--emerald)">✓</div>
+            Flexible scheduling — mornings, evenings & weekends
+          </div>
+          <div class="flex items-center gap-3 text-sm" style="color:var(--charcoal)">
+            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0" style="background:var(--emerald)">✓</div>
+            Progress tracking & certificate programs
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ SERVICES ══════════════════════════════════════ -->
+<section id="services" class="py-24 relative" style="background: var(--beige)">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <div class="section-label justify-center">📚 What We Offer</div>
+      <h2 class="font-display mb-4 section-heading" style="font-size: clamp(2rem, 4vw, 2.75rem); color:var(--charcoal)">
+        Programs Built for <span style="color:var(--indigo)">Real Growth</span>
+      </h2>
+      <p class="text-base max-w-xl mx-auto" style="color:var(--gray)">
+        Seven expertly crafted programs designed to unlock language mastery, professional confidence, and cultural pride.
+      </p>
+    </div>
+
+    <!-- Service grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+      <div class="service-card reveal delay-1">
+        <div class="service-icon" style="background: rgba(61,39,133,0.08)">🗣️</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Igbo Language Tutoring</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">From tone marks to complex grammar — structured progression for children and adults at every level.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Beginner → Advanced</div>
+      </div>
+
+      <div class="service-card reveal delay-2">
+        <div class="service-icon" style="background: rgba(212,160,23,0.1)">✍️</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Writing & Proofreading</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Academic essays, business writing, and creative content crafted and perfected with expert editorial guidance.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Academic & Professional</div>
+      </div>
+
+      <div class="service-card reveal delay-3">
+        <div class="service-icon" style="background: rgba(15,123,92,0.1)">🔄</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Translation Services</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Accurate, culturally faithful Igbo ↔ English translation for documents, media, and official correspondence.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Igbo ↔ English</div>
+      </div>
+
+      <div class="service-card reveal delay-4">
+        <div class="service-icon" style="background: rgba(220,38,38,0.08)">🎤</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Public Speaking</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Develop executive presence, articulate delivery, and persuasive communication skills for any platform.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Confidence → Presence</div>
+      </div>
+
+      <div class="service-card reveal delay-1">
+        <div class="service-icon" style="background: rgba(2,132,199,0.08)">🌐</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Conversational English</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Tailored for adults seeking fluency — workplace language, social conversations, and professional clarity.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Adults Focused</div>
+      </div>
+
+      <div class="service-card reveal delay-2">
+        <div class="service-icon" style="background: rgba(124,58,237,0.08)">🌱</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Character Development</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Rooted in Igbo values and modern psychology — cultivating integrity, discipline, and purpose in young minds.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Youth & Teens</div>
+      </div>
+
+      <div class="service-card reveal delay-3" style="sm:col-span-2 lg:col-span-1">
+        <div class="service-icon" style="background: rgba(217,119,6,0.1)">💼</div>
+        <h3 class="font-display font-bold text-lg mb-3" style="color:var(--charcoal)">Career Counseling</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--gray)">Strategic guidance for career transitions, CV crafting, interview mastery, and professional branding.</p>
+        <div class="text-xs font-semibold tracking-wide" style="color:var(--indigo)">Job-Ready Strategy</div>
+      </div>
+
+      <!-- CTA card -->
+      <div class="service-card reveal delay-4 flex flex-col items-center justify-center text-center" style="background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%); border:none">
+        <div class="text-4xl mb-4">✨</div>
+        <h3 class="font-display font-bold text-lg mb-3 text-white">Custom Program</h3>
+        <p class="text-sm leading-relaxed mb-6 text-white/75">Don't see what you need? Let's design a bespoke learning plan just for you.</p>
+        <a href="#booking" class="btn-primary" style="background: white; color: var(--indigo); box-shadow: none">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ GROUP CLASSES ══════════════════════════════════════ -->
+<section id="classes" class="py-24 relative" style="background: var(--cream)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-label justify-center">📅 Group Sessions</div>
+      <h2 class="font-display mb-4 section-heading" style="font-size: clamp(2rem, 4vw, 2.75rem); color:var(--charcoal)">
+        Join a <span style="color:var(--indigo)">Learning Community</span>
+      </h2>
+      <p class="text-base max-w-xl mx-auto" style="color:var(--gray)">
+        Small, intimate group classes — structured to maximise participation and peer learning.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Beginners -->
+      <div class="class-card reveal delay-1" style="background: linear-gradient(145deg, var(--indigo-dark), var(--indigo))">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-15" style="background: var(--gold); filter: blur(40px); transform: translate(30%,-30%)"></div>
+        <div class="relative z-10">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-5 text-white" style="background: rgba(212,160,23,0.25); border: 1px solid rgba(212,160,23,0.4)">BEGINNERS</div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Igbo Foundations</h3>
+          <p class="text-white/65 text-sm mb-6 leading-relaxed">Alphabet, tones, basic vocabulary & essential phrases. Perfect for diaspora returnees and total beginners.</p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>🗓</span> Mon, Wed, Fri — 7:00 PM
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>👥</span> Max 8 students per class
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>⏱</span> 60 minutes per session
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>📊</span> Weekly progress quizzes
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white/50 text-xs">Starting from</div>
+              <div class="font-display font-bold text-2xl text-white">₦8,000<span class="text-sm font-normal text-white/60">/mo</span></div>
+            </div>
+            <a href="#booking" class="btn-primary" style="background: var(--gold); color: var(--indigo-dark); box-shadow: 0 4px 20px rgba(212,160,23,0.4)">Enroll</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intermediate -->
+      <div class="class-card reveal delay-2" style="background: linear-gradient(145deg, var(--emerald), #0b5e46)">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-20" style="background: white; filter: blur(40px); transform: translate(30%,-30%)"></div>
+        <div class="relative z-10">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-5" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color:white">INTERMEDIATE</div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Igbo Conversational</h3>
+          <p class="text-white/70 text-sm mb-6 leading-relaxed">Build real conversational fluency with dialogues, proverbs, storytelling & oral tradition practice.</p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>🗓</span> Tue, Thu, Sat — 6:00 PM
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>👥</span> Max 10 students per class
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>⏱</span> 75 minutes per session
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>📖</span> Cultural immersion topics
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white/50 text-xs">Starting from</div>
+              <div class="font-display font-bold text-2xl text-white">₦10,000<span class="text-sm font-normal text-white/60">/mo</span></div>
+            </div>
+            <a href="#booking" class="btn-primary" style="background:white; color:var(--emerald); box-shadow:0 4px 20px rgba(255,255,255,0.3)">Enroll</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced / Exam Prep -->
+      <div class="class-card reveal delay-3" style="background: linear-gradient(145deg, #8b2252, #5b1a3a)">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-15" style="background: var(--gold-light); filter: blur(40px); transform: translate(30%,-30%)"></div>
+        <div class="relative z-10">
+          <div class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider mb-5 text-white" style="background: rgba(240,200,66,0.25); border: 1px solid rgba(240,200,66,0.4)">ADVANCED</div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Igbo Mastery & WAEC</h3>
+          <p class="text-white/65 text-sm mb-6 leading-relaxed">Deep literature, poetry, essay writing and targeted WAEC/NECO exam preparation with past questions.</p>
+          <div class="space-y-3 mb-8">
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>🗓</span> Sat & Sun — 9:00 AM
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>👥</span> Max 6 students per class
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>⏱</span> 90 minutes per session
+            </div>
+            <div class="flex items-center gap-3 text-sm text-white/80">
+              <span>📝</span> Full exam simulation drills
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-white/50 text-xs">Starting from</div>
+              <div class="font-display font-bold text-2xl text-white">₦15,000<span class="text-sm font-normal text-white/60">/mo</span></div>
+            </div>
+            <a href="#booking" class="btn-primary" style="background:var(--gold-light); color:#5b1a3a; box-shadow:0 4px 20px rgba(240,200,66,0.35)">Enroll</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ BOOKING ══════════════════════════════════════ -->
+<section id="booking" class="py-24 relative uli-pattern" style="background: var(--beige)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left: Info panel -->
+      <div class="reveal reveal-left sticky top-28">
+        <div class="section-label">📅 Book a Session</div>
+        <h2 class="font-display mb-4 section-heading" style="font-size: clamp(2rem, 4vw, 2.75rem); color:var(--charcoal)">
+          Start Your <span style="color:var(--indigo)">Journey Today</span>
+        </h2>
+        <div class="gold-divider" style="margin: 0 0 24px 0;"></div>
+        <p class="leading-relaxed mb-8 text-base" style="color:var(--gray)">
+          Fill in the booking form and we'll get back to you within 24 hours to confirm your session schedule and discuss your learning goals.
+        </p>
+
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start p-4 rounded-2xl bg-white">
+            <div class="text-2xl w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background:rgba(61,39,133,0.07)">🤝</div>
+            <div>
+              <div class="font-semibold mb-1" style="color:var(--charcoal)">Personalized Onboarding</div>
+              <div class="text-sm" style="color:var(--gray)">Your first session includes a free placement assessment to map your level.</div>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-4 rounded-2xl bg-white">
+            <div class="text-2xl w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background:rgba(212,160,23,0.1)">⚡</div>
+            <div>
+              <div class="font-semibold mb-1" style="color:var(--charcoal)">Fast Confirmation</div>
+              <div class="text-sm" style="color:var(--gray)">Booking confirmed within 24 hours — no waiting, no lengthy onboarding forms.</div>
+            </div>
+          </div>
+          <div class="flex gap-4 items-start p-4 rounded-2xl bg-white">
+            <div class="text-2xl w-12 h-12 flex items-center justify-center rounded-xl flex-shrink-0" style="background:rgba(15,123,92,0.08)">🔒</div>
+            <div>
+              <div class="font-semibold mb-1" style="color:var(--charcoal)">Flexible Rescheduling</div>
+              <div class="text-sm" style="color:var(--gray)">Life happens. Reschedule up to 24 hours before your session — no penalty.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-right">
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl" style="border: 1px solid rgba(61,39,133,0.08)">
+          <h3 class="font-display font-bold text-2xl mb-8" style="color:var(--charcoal)">Booking Request Form</h3>
+
+          <!-- Alert boxes -->
+          <div id="alert-success" class="alert alert-success mb-6">
+            <span class="text-2xl">🎉</span>
+            <div>
+              <div class="font-semibold">Booking Received!</div>
+              <div class="text-sm mt-0.5">We'll confirm your session within 24 hours. Check your email for details.</div>
+            </div>
+          </div>
+          <div id="alert-error" class="alert alert-error mb-6">
+            <span class="text-2xl">⚠️</span>
+            <div>
+              <div class="font-semibold">Something went wrong</div>
+              <div class="text-sm mt-0.5" id="error-msg">Please try again or contact us directly.</div>
+            </div>
+          </div>
+
+          <form id="booking-form" novalidate>
+            <!-- Name & Email -->
+            <div class="grid sm:grid-cols-2 gap-5 mb-5">
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="fullname">Full Name *</label>
+                <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Adaeze Okonkwo" required />
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="adaeze@example.com" required />
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-input" placeholder="+234 800 000 0000" />
+            </div>
+
+            <!-- Service -->
+            <div class="form-group">
+              <label class="form-label" for="service">Select Service *</label>
+              <div class="relative">
+                <select id="service" name="service" class="form-select" required style="padding-right:40px">
+                  <option value="">— Choose a program —</option>
+                  <option value="igbo-tutoring">🗣 Igbo Language Tutoring</option>
+                  <option value="writing-proofreading">✍️ Writing & Proofreading</option>
+                  <option value="translation">🔄 Translation (Igbo ↔ English)</option>
+                  <option value="public-speaking">🎤 Public Speaking</option>
+                  <option value="conversational-english">🌐 Conversational English (Adults)</option>
+                  <option value="character-development">🌱 Character Development</option>
+                  <option value="career-counseling">💼 Career Counseling</option>
+                  <option value="group-beginners">👥 Group Class — Igbo Foundations (Beginners)</option>
+                  <option value="group-intermediate">👥 Group Class — Conversational (Intermediate)</option>
+                  <option value="group-advanced">👥 Group Class — Mastery & WAEC Prep</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style="color:var(--gray)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preferred days -->
+            <div class="form-group">
+              <label class="form-label">Preferred Days * <span class="font-normal text-xs opacity-60">(select all that apply)</span></label>
+              <div class="grid grid-cols-2 gap-2">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Monday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Monday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Tuesday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Tuesday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Wednesday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Wednesday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Thursday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Thursday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Friday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Friday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Saturday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Saturday</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="days" value="Sunday" />
+                  <span class="checkbox-custom"></span>
+                  <span>Sunday</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Hours & Sessions row -->
+            <div class="grid sm:grid-cols-2 gap-5 mb-5">
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="hours">Hours per Day *</label>
+                <input type="number" id="hours" name="hours" class="form-input" placeholder="e.g. 1" min="0.5" max="8" step="0.5" required />
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="sessions">Sessions per Week *</label>
+                <input type="number" id="sessions" name="sessions" class="form-input" placeholder="e.g. 3" min="1" max="7" required />
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group">
+              <label class="form-label" for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" class="form-input" rows="3" placeholder="Tell us about your learning goals, current level, or any questions you have..." style="resize:vertical; min-height:80px"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" id="submit-btn" class="btn-primary w-full justify-center text-center" style="padding:16px; font-size:1rem; border-radius:14px; border:none">
+              <span id="btn-text">Send Booking Request</span>
+              <div class="spinner" id="spinner"></div>
+            </button>
+
+            <p class="text-xs text-center mt-4" style="color:var(--gray)">
+              🔒 Your information is private and will only be used to process your booking.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ TESTIMONIALS ══════════════════════════════════════ -->
+<section id="testimonials" class="py-24 relative" style="background: var(--cream)">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="section-label justify-center">💬 Testimonials</div>
+      <h2 class="font-display mb-4 section-heading" style="font-size: clamp(2rem, 4vw, 2.75rem); color:var(--charcoal)">
+        Voices of Our <span style="color:var(--indigo)">Community</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="testimonial-card reveal delay-1">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "Within three months, I went from knowing zero Igbo to having full conversations with my grandmother in the village. The tutor's patience and cultural approach made all the difference. Truly life-changing."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, var(--indigo), var(--indigo-light))">AO</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Adaeze Okonkwo</div>
+            <div class="text-xs" style="color:var(--gray)">Diaspora student, London 🇬🇧</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-2">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "My son failed Igbo twice. After 6 weeks of tutoring here, he scored an A in his WAEC. The WAEC prep class is incredibly structured and the past question drill sessions are unlike anything else."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, var(--emerald), #0a5c44)">CE</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Chinyere Eze</div>
+            <div class="text-xs" style="color:var(--gray)">Parent, Enugu State 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-3">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "The career counseling session completely reframed how I was approaching interviews. I got my first tech job offer two weeks after. And the public speaking coaching? Outstanding. Highly recommend."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #8b2252, #5b1a3a)">IN</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Ikenna Nwosu</div>
+            <div class="text-xs" style="color:var(--gray)">Tech professional, Lagos 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-1">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "I needed to translate a 40-page legal document from Igbo to English. It was done accurately, on time, and with deep cultural sensitivity. I'll use this service for all my translation needs going forward."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, var(--gold), #b8860b)">OU</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Obiora Udeh</div>
+            <div class="text-xs" style="color:var(--gray)">Legal consultant, Abuja 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-2">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "The character development program for my 12-year-old has been incredible. She's more confident, respectful, and motivated. Seeing Igbo values taught alongside modern life skills is exactly what she needed."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #1e40af, #3b82f6)">NI</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Ngozi Ibeji</div>
+            <div class="text-xs" style="color:var(--gray)">Parent, Port Harcourt 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-3">
+        <div class="flex items-center gap-1 mb-4">
+          <span style="color:var(--gold)" class="text-lg">★★★★★</span>
+        </div>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--gray)">
+          "I joined the conversational English class as an adult and was a bit nervous. The environment was warm, judgment-free, and structured beautifully. My workplace confidence has improved enormously."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #065f46, #10b981)">EO</div>
+          <div>
+            <div class="font-semibold text-sm" style="color:var(--charcoal)">Emeka Offor</div>
+            <div class="text-xs" style="color:var(--gray)">Business owner, Onitsha 🇳🇬</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overall rating -->
+    <div class="text-center mt-14 reveal">
+      <div class="inline-flex items-center gap-4 bg-white rounded-2xl px-8 py-5 shadow-lg" style="border:1px solid rgba(61,39,133,0.08)">
+        <div class="font-display font-bold text-5xl" style="color:var(--indigo)">4.9</div>
+        <div>
+          <div class="flex gap-1 text-xl" style="color:var(--gold)">★★★★★</div>
+          <div class="text-sm mt-1" style="color:var(--gray)">Based on 120+ student reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ CONTACT / FOOTER ══════════════════════════════════════ -->
+<footer id="contact" style="background: var(--indigo-dark)">
+  <!-- Upper footer -->
+  <div class="py-16 border-b" style="border-color: rgba(255,255,255,0.08)">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10">
+        <!-- Brand -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold" style="background: linear-gradient(135deg, var(--gold), var(--gold-light))">Ọ</div>
+            <div>
+              <div class="font-display font-bold text-xl text-white leading-none">Ọ̀mụmụ Igbo</div>
+              <div class="text-xs opacity-50 text-white mt-0.5">Language Excellence</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed mb-6" style="color:rgba(255,255,255,0.55); max-width: 320px">
+            Preserving Igbo language and culture through excellence in education. Connecting diaspora and homeland — one lesson at a time.
+          </p>
+          <!-- Social -->
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all text-sm" style="border:1px solid rgba(255,255,255,0.12)">f</a>
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all text-sm" style="border:1px solid rgba(255,255,255,0.12)">𝕏</a>
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all text-sm" style="border:1px solid rgba(255,255,255,0.12)">in</a>
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-all text-sm" style="border:1px solid rgba(255,255,255,0.12)">▶</a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-5" style="color:var(--gold)">Quick Links</div>
+          <div class="space-y-3">
+            <a href="#about" class="footer-link block">About Us</a>
+            <a href="#services" class="footer-link block">Our Services</a>
+            <a href="#classes" class="footer-link block">Group Classes</a>
+            <a href="#booking" class="footer-link block">Book a Session</a>
+            <a href="#testimonials" class="footer-link block">Testimonials</a>
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-5" style="color:var(--gold)">Get in Touch</div>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="text-base mt-0.5">📧</span>
+              <div>
+                <div class="text-xs text-white/40 mb-0.5">Email</div>
+                <a href="mailto:idriswale70@gmail.com" class="footer-link text-sm">idriswale70@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-base mt-0.5">📞</span>
+              <div>
+                <div class="text-xs text-white/40 mb-0.5">Phone / WhatsApp</div>
+                <a href="tel:+2348000000000" class="footer-link text-sm">+234 800 000 0000</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-base mt-0.5">📍</span>
+              <div>
+                <div class="text-xs text-white/40 mb-0.5">Location</div>
+                <div class="footer-link text-sm">Online & Enugu State, Nigeria</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-base mt-0.5">⏰</span>
+              <div>
+                <div class="text-xs text-white/40 mb-0.5">Available</div>
+                <div class="footer-link text-sm">Mon–Sat, 7:00 AM – 9:00 PM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="py-6">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-xs" style="color:rgba(255,255,255,0.35)">
+        © 2025 Ọ̀mụmụ Igbo Language Platform. All rights reserved.
+      </div>
+      <div class="text-xs" style="color:rgba(255,255,255,0.35)">
+        Built with excellence · <span style="color:var(--gold-light)">Igbo kwenu 🙌</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════ JAVASCRIPT ══════════════════════════════════════ -->
+<script>
+/* ──────────────────────────────────────────
+   NAVBAR: scroll + color toggle
+────────────────────────────────────────── */
+const navbar = document.getElementById('navbar');
+const logoName = document.getElementById('logo-name');
+const logoSub = document.getElementById('logo-sub');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+    logoName.style.color = 'var(--charcoal)';
+    logoSub.style.color = 'var(--gray)';
+    document.querySelectorAll('#navbar .nav-link').forEach(l => l.style.color = '');
+  } else {
+    navbar.classList.remove('scrolled');
+    logoName.style.color = 'white';
+    logoSub.style.color = 'rgba(255,255,255,0.7)';
+    document.querySelectorAll('#navbar .nav-link').forEach(l => l.style.color = 'white');
+  }
+});
+
+// Initialize nav link colors for hero top
+(function initNavColors() {
+  logoName.style.color = 'white';
+  logoSub.style.color = 'rgba(255,255,255,0.7)';
+  document.querySelectorAll('#navbar .nav-link').forEach(l => l.style.color = 'white');
+})();
+
+/* ──────────────────────────────────────────
+   MOBILE MENU
+────────────────────────────────────────── */
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+}
+
+/* ──────────────────────────────────────────
+   SCROLL REVEAL
+────────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  revealObserver.observe(el);
+});
+
+/* ──────────────────────────────────────────
+   BOOKING FORM SUBMISSION
+   - Builds a structured booking object
+   - POSTs to /api/book (Express backend endpoint)
+   - Sends email notification via backend
+   - Falls back gracefully on network error
+────────────────────────────────────────── */
+document.getElementById('booking-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  // --- Collect form data ---
+  const fullname = document.getElementById('fullname').value.trim();
+  const email    = document.getElementById('email').value.trim();
+  const phone    = document.getElementById('phone').value.trim();
+  const service  = document.getElementById('service').value;
+  const hours    = document.getElementById('hours').value;
+  const sessions = document.getElementById('sessions').value;
+  const notes    = document.getElementById('notes').value.trim();
+
+  const dayCheckboxes = document.querySelectorAll('input[name="days"]:checked');
+  const days = Array.from(dayCheckboxes).map(cb => cb.value);
+
+  // --- Basic validation ---
+  const alertSuccess = document.getElementById('alert-success');
+  const alertError   = document.getElementById('alert-error');
+  alertSuccess.style.display = 'none';
+  alertError.style.display = 'none';
+
+  if (!fullname || !email || !service || !hours || !sessions) {
+    alertError.style.display = 'flex';
+    document.getElementById('error-msg').textContent = 'Please fill in all required fields.';
+    alertError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  if (days.length === 0) {
+    alertError.style.display = 'flex';
+    document.getElementById('error-msg').textContent = 'Please select at least one preferred day.';
+    alertError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // --- Build structured booking object (DB-ready) ---
+  const bookingData = {
+    name:        fullname,
+    email:       email,
+    phone:       phone || null,
+    service:     service,
+    days:        days,
+    hoursPerDay: parseFloat(hours),
+    sessionsPerWeek: parseInt(sessions),
+    notes:       notes || null,
+    timestamp:   new Date().toISOString(),
+    status:      'pending'          // DB field for workflow
+  };
+
+  // --- Loading state ---
+  const btn     = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const spinner = document.getElementById('spinner');
+
+  btn.disabled = true;
+  btn.style.opacity = '0.75';
+  btnText.textContent = 'Sending…';
+  spinner.style.display = 'block';
+
+  try {
+    /*
+     * POST to Express backend endpoint.
+     * The backend should:
+     *  1. Save bookingData to MongoDB / PostgreSQL / SQLite
+     *  2. Send email to idriswale70@gmail.com with booking details
+     *  3. Send confirmation email to bookingData.email
+     *  4. Return { success: true, bookingId: '...' }
+     *
+     * Example Express handler (not included here):
+     *   app.post('/api/book', async (req, res) => {
+     *     const booking = new Booking(req.body);
+     *     await booking.save();
+     *     await sendEmail({ to: 'idriswale70@gmail.com', ...formatBookingEmail(booking) });
+     *     res.json({ success: true, bookingId: booking._id });
+     *   });
+     */
+    const response = await fetch('/api/book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bookingData)
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success !== false) {
+      // ✅ Success
+      alertSuccess.style.display = 'flex';
+      alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('booking-form').reset();
+    } else {
+      throw new Error(result.message || 'Server returned an error.');
+    }
+
+  } catch (err) {
+    /*
+     * If the backend isn't live yet, we show a friendly message.
+     * In production the fetch above handles real submissions.
+     *
+     * For demo / development purposes we simulate success:
+     */
+    if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError') || err.message.includes('Load failed')) {
+      // Backend not running — demo mode
+      alertSuccess.style.display = 'flex';
+      alertSuccess.querySelector('div div:last-child').textContent =
+        'Demo mode: Your booking has been logged locally. Connect the Express backend to enable email delivery.';
+      alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Log the structured object to console for dev inspection
+      console.log('[Ọ̀mụmụ Igbo Booking]', bookingData);
+      document.getElementById('booking-form').reset();
+    } else {
+      alertError.style.display = 'flex';
+      document.getElementById('error-msg').textContent = err.message || 'An unexpected error occurred. Please try again.';
+      alertError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  } finally {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btnText.textContent = 'Send Booking Request';
+    spinner.style.display = 'none';
+  }
+});
+
+/* ──────────────────────────────────────────
+   SMOOTH SCROLL — all anchor links
+────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ──────────────────────────────────────────
+   SELECT arrow color patch (Tailwind compat)
+────────────────────────────────────────── */
+document.querySelectorAll('.form-select').forEach(sel => {
+  sel.addEventListener('focus', () => sel.style.borderColor = 'var(--indigo-light)');
+  sel.addEventListener('blur',  () => sel.style.borderColor = '');
+});
+</script>
+
+</body>
+</html>
